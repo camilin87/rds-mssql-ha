@@ -17,10 +17,29 @@ create table tb_accounts(
 );
 go;
 
+declare @now varchar(300);
 WHILE ( SELECT count(*) FROM tb_accounts) < $3000000
 BEGIN
-      insert into tb_accounts(name) values ( convert(varchar(25), getdate(), 120) );
+    set @now = convert(varchar(25), getdate(), 120);
+
+    insert into tb_accounts(name)
+    values
+      (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now),
+      (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now),
+      (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now),
+      (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now),
+      (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now),
+      (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now),
+      (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now),
+      (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now),
+      (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now),
+      (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now),
+      (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now), (@now)
+    ;
 END
+go;
+
+select count(*) from tb_accounts;
 go;
 
 select top 1 * from tb_accounts order by id desc;
