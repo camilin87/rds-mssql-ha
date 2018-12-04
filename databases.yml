@@ -6,6 +6,8 @@
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-rds.html
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html
+# https://aws.amazon.com/rds/sqlserver/pricing/
+# https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerMultiAZ.html
 
 Parameters:
   AllowedCidrIp:
@@ -44,12 +46,13 @@ Resources:
     Type: AWS::RDS::DBInstance
     Properties:
       AllocatedStorage: 20
-      DBInstanceClass: db.t2.small
-      Engine: sqlserver-web
+      DBInstanceClass: db.m4.large
+      Engine: sqlserver-se
+      LicenseModel: license-included
+      MultiAZ: true
       MasterUsername: !Ref MasterUsername
       MasterUserPassword: !Ref MasterPassword
       PubliclyAccessible: true
-      MultiAZ: true
       VPCSecurityGroups:
       - !GetAtt DBSecurityGroup.GroupId
 
