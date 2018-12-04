@@ -26,3 +26,24 @@ Create AWS Credentials with the following permissions
 }
 ```
 
+## Database setup  
+
+Run this command to create the stack
+
+```bash
+aws cloudformation create-stack --stack-name rds-mssql-ha-stack --template-body file://databases.yml
+```
+
+And this command for subsequent changes
+
+```bash
+aws cloudformation update-stack --stack-name rds-mssql-ha-stack --template-body file://databases.yml
+```
+
+**NOTE**: MSSQL Instance classes [need to be very specific](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.InstanceClasses)  
+
+## Cleanup  
+
+```bash
+aws cloudformation delete-stack --stack-name rds-mssql-ha-stack
+```
