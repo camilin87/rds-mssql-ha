@@ -4,6 +4,7 @@
 # https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-rds.html
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html
 
 Parameters:
   AllowedCidrIp:
