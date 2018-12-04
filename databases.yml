@@ -5,10 +5,17 @@
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-rds.html
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html
 
 Parameters:
   AllowedCidrIp:
     Type: String
+  MasterUsername:
+    Type: String
+    Default: ChangeMeMaster
+  MasterPassword:
+    Type: String
+    Default: ChangeMePassword
 
 Resources:
   DBSecurityGroup:
@@ -27,8 +34,8 @@ Resources:
       AllocatedStorage: 20
       DBInstanceClass: db.t2.small
       Engine: sqlserver-web
-      MasterUsername: MyName
-      MasterUserPassword: MyPassword
+      MasterUsername: !Ref MasterUsername
+      MasterUserPassword: !Ref MasterPassword
       PubliclyAccessible: true
       VPCSecurityGroups:
       - !GetAtt DBSecurityGroup.GroupId
