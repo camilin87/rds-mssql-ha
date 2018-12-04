@@ -47,6 +47,22 @@ aws cloudformation update-stack --stack-name rds-mssql-ha-stack --template-body 
 
 Run the `seed-db.sql` script against both of the SQL databases  
 
+## Run the api  
+
+Get the database endpoints from the cloudformation stack  
+
+```bash
+aws cloudformation describe-stacks --stack-name rds-mssql-ha-stack
+```
+
+Start the api project
+
+```bash
+pushd rds-mssql-ha-tester-api && \
+  sdk use java 11.0.1-open && \
+  mvn clean spring-boot:run
+```
+
 ## Cleanup  
 
 ```bash
