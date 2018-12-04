@@ -49,12 +49,6 @@ Run the `seed-db.sql` script against both of the SQL databases
 
 ## Run the api  
 
-Get the database endpoints from the cloudformation stack  
-
-```bash
-aws cloudformation describe-stacks --stack-name rds-mssql-ha-stack
-```
-
 Start the api project
 
 ```bash
@@ -63,6 +57,8 @@ source load_env_vars.sh && \
   sdk use java 11.0.1-open && \
   mvn clean spring-boot:run
 ```
+
+
 
 ## Cleanup  
 
