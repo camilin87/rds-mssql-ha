@@ -27,7 +27,7 @@ Create AWS Credentials with the following permissions
 }
 ```
 
-## Database setup  
+## Database Setup  
 
 Run this command to create the stack
 
@@ -42,6 +42,10 @@ aws cloudformation update-stack --stack-name rds-mssql-ha-stack --template-body 
 ```
 
 **NOTE**: MSSQL Instance classes [need to be very specific](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.InstanceClasses)  
+
+## Database Seed  
+
+Run the `seed-db.sql` script against both of the SQL databases  
 
 ## Cleanup  
 
