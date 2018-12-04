@@ -40,6 +40,22 @@ Resources:
       VPCSecurityGroups:
       - !GetAtt DBSecurityGroup.GroupId
 
+  DB2:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: 20
+      DBInstanceClass: db.t2.small
+      Engine: sqlserver-web
+      MasterUsername: !Ref MasterUsername
+      MasterUserPassword: !Ref MasterPassword
+      PubliclyAccessible: true
+      MultiAZ: true
+      VPCSecurityGroups:
+      - !GetAtt DBSecurityGroup.GroupId
+
 Outputs:
   DB1Url:
     Value: !GetAtt DB1.Endpoint.Address
+
+  DB2Url:
+    Value: !GetAtt DB2.Endpoint.Address
