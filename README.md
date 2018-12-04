@@ -6,6 +6,7 @@ Make sure that scaling operations in MultiAZ databases take no downtime.
 
 Create AWS Credentials with the following permissions  
 - `AmazonRDSFullAccess`
+- `AmazonEC2FullAccess`
 - Add an inline `CloudFormationFullAccess` policy
 
 ```json
@@ -31,13 +32,13 @@ Create AWS Credentials with the following permissions
 Run this command to create the stack
 
 ```bash
-aws cloudformation create-stack --stack-name rds-mssql-ha-stack --template-body file://databases.yml
+aws cloudformation create-stack --stack-name rds-mssql-ha-stack --template-body file://databases.yml --parameters ParameterKey=AllowedCidrIp,ParameterValue=1.2.3.4/32
 ```
 
 And this command for subsequent changes
 
 ```bash
-aws cloudformation update-stack --stack-name rds-mssql-ha-stack --template-body file://databases.yml
+aws cloudformation update-stack --stack-name rds-mssql-ha-stack --template-body file://databases.yml --parameters ParameterKey=AllowedCidrIp,ParameterValue=1.2.3.4/32
 ```
 
 **NOTE**: MSSQL Instance classes [need to be very specific](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.InstanceClasses)  

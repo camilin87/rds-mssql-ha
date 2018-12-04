@@ -5,7 +5,21 @@
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-rds.html
 
+Parameters:
+  AllowedCidrIp:
+    Type: String
+
 Resources:
+  DBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow remote database connections
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 1433
+        ToPort: 1433
+        CidrIp: !Ref AllowedCidrIp
+
   DB1:
     Type: AWS::RDS::DBInstance
     Properties:
@@ -15,3 +29,5 @@ Resources:
       MasterUsername: MyName
       MasterUserPassword: MyPassword
       PubliclyAccessible: true
+      VPCSecurityGroups:
+      - !GetAtt DBSecurityGroup.GroupId
