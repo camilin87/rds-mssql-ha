@@ -2,6 +2,7 @@ package com.tddapps.rdsmssqlhatesterapi;
 
 import lombok.val;
 import org.joda.time.DateTime;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,12 +18,14 @@ public class StatusController {
         return CheckDatabase1();
     }
 
+    @CrossOrigin
     @PostMapping("/check1")
     public String CheckDatabase1(){
         val connectionString = BuildConnectionString(1);
         return CheckDatabase(connectionString);
     }
 
+    @CrossOrigin
     @PostMapping("/check2")
     public String CheckDatabase2(){
         val connectionString = BuildConnectionString(2);
