@@ -72,7 +72,7 @@
       function clearResults(index){ $('#resultsContainer' + index).text('No Results Yet'); };
 
       function buttonStartClickHandler(index){
-        console.log('clicked start button ' + index);
+        console.debug('clicked start button ' + index);
 
         hideStartButton(index);
         showStopButton(index);
@@ -81,7 +81,7 @@
       }
 
       function buttonStopClickHandler(index){
-        console.log('clicked stop button ' + index);
+        console.debug('clicked stop button ' + index);
 
         pollingStatus[index.toString()] = false;
 
@@ -94,7 +94,7 @@
         setTimeout(function(){
           var shouldTestDatabase = pollingStatus[index.toString()];
 
-          console.log('polling ' + index + ' shouldPoll ' + shouldTestDatabase);
+          console.debug('polling ' + index + ' shouldPoll ' + shouldTestDatabase);
 
           if (shouldTestDatabase){
             testDatabase(index);
