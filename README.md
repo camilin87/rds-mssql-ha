@@ -57,7 +57,11 @@ source load_env_vars.sh && \
   mvn clean spring-boot:run
 ```
 
+## Run the Web Client  
 
+```bash
+http-server -p 3000
+```
 
 ## Cleanup  
 
