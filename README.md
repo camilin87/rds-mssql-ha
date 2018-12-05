@@ -82,4 +82,4 @@ The conventional database finished the scaling operation earlier.
 
 This image shows the conventional database down while the MultiAZ was up.  
 
-![Different behavior](imgs/2018-10-04-test-results.png)  
+![Different behavior](imgs/2018-12-04-test-results.png)  
