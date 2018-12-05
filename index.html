@@ -19,13 +19,14 @@
     crossorigin="anonymous"></script>
 </head>
 <body>
-  Testing
+  <h1>Test RDS MSSQL HA Scenarios</h1>
 
   <div class="flexContainer">
     <div class="flexColumn">
       <h2>Test DB1</h2>
 
-      <button id="buttonTest1">Start Test</button>
+      <button id="buttonStart1">Start</button>
+      <button id="buttonStop1">Stop</button>
       <div id="resultsContainer1">
           No Results Yet
       </div>
@@ -34,7 +35,8 @@
     <div class="flexColumn">
       <h2>Test DB2 with MultiAZ</h2>
 
-      <button id="buttonTest2">Start Test</button>
+      <button id="buttonStart2">Start</button>
+      <button id="buttonStop2">Stop</button>
       <div id="resultsContainer2">
           No Results Yet
       </div>
@@ -43,7 +45,42 @@
 
   <script type="text/javascript">
     $(document).ready(function(){
-      console.log("document loaded");
+      $('#buttonStart1').click(function(){ buttonStartClickHandler(1); });
+      $('#buttonStart2').click(function(){ buttonStartClickHandler(2); });
+      $('#buttonStop1').click(function(){ buttonStopClickHandler(1); });
+      $('#buttonStop2').click(function(){ buttonStopClickHandler(2); });
+
+      showStartButton(1);
+      showStartButton(2);
+      hideStopButton(1);
+      hideStopButton(2);
+      clearResults(1);
+      clearResults(2);
+
+      function showStartButton(index){ $('#buttonStart' + index).show(); }
+      function showStopButton(index){ $('#buttonStop' + index).show(); }
+      function hideStartButton(index){ $('#buttonStart' + index).hide(); }
+      function hideStopButton(index){ $('#buttonStop' + index).hide(); }
+      function clearResults(index){ $('#resultsContainer' + index).text('No Results Yet'); };
+
+      function buttonStartClickHandler(index){
+        console.log('clicked start button ' + index);
+
+        hideStartButton(index);
+        showStopButton(index);
+
+        //TODO start testing the api
+      }
+
+      function buttonStopClickHandler(index){
+        console.log('clicked stop button ' + index);
+
+        //TODO stop testing the api
+
+        hideStopButton(index);
+        showStartButton(index);
+        clearResults(index);
+      }
     });
   </script>
 </body>
