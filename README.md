@@ -68,3 +68,18 @@ http-server -p 3000
 ```bash
 aws cloudformation delete-stack --stack-name rds-mssql-ha-stack
 ```
+
+## 2018-12-04 Scaling test results  
+
+### Test Setup  
+A web application was constantly reading and writing from two databases.  
+A scaling operation was triggered while the application was running.
+
+### Test Results  
+The MultiAZ database experienced a very small downtime. Less that a minute.  
+While the conventional database was down for several minutes.  
+The conventional database finished the scaling operation earlier.  
+
+This image shows the conventional database down while the MultiAZ was up.  
+
+![Different behavior](imgs/2018-10-04-test-results.png)  
