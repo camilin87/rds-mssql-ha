@@ -105,7 +105,10 @@
       }
 
       function testDatabase(index){
-        //TODO test database
+        var databaseUrl = 'http://localhost:8080/check' + index;
+        $.post(databaseUrl, function(data) {
+          $('#resultsContainer' + index).text(data);
+        });
       }
     });
   </script>
