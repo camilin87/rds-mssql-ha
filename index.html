@@ -57,6 +57,14 @@
       clearResults(1);
       clearResults(2);
 
+      var pollingStatus = {
+        "1": false,
+        "2": false
+      };
+
+      runPolling(1);
+      runPolling(2);
+
       function showStartButton(index){ $('#buttonStart' + index).show(); }
       function showStopButton(index){ $('#buttonStop' + index).show(); }
       function hideStartButton(index){ $('#buttonStart' + index).hide(); }
@@ -69,17 +77,35 @@
         hideStartButton(index);
         showStopButton(index);
 
-        //TODO start testing the api
+        pollingStatus[index.toString()] = true;
       }
 
       function buttonStopClickHandler(index){
         console.log('clicked stop button ' + index);
 
-        //TODO stop testing the api
+        pollingStatus[index.toString()] = false;
 
         hideStopButton(index);
         showStartButton(index);
         clearResults(index);
+      }
+
+      function runPolling(index){
+        setTimeout(function(){
+          var shouldTestDatabase = pollingStatus[index.toString()];
+
+          console.log('polling ' + index + ' shouldPoll ' + shouldTestDatabase);
+
+          if (shouldTestDatabase){
+            testDatabase(index);
+          }
+
+          runPolling(index);
+        }, 1000);
+      }
+
+      function testDatabase(index){
+        //TODO test database
       }
     });
   </script>
