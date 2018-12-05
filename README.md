@@ -53,7 +53,6 @@ Start the api project
 
 ```bash
 source load_env_vars.sh && \
-  pushd rds-mssql-ha-tester-api && \
   sdk use java 11.0.1-open && \
   mvn clean spring-boot:run
 ```
